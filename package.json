@@ -16,11 +16,12 @@
   "dependencies": {
     "@angular-devkit/core": "^12.2.18",
     "@angular-devkit/schematics": "^12.2.18",
+    "@schematics/angular": "^12.2.18",
     "typescript": "~4.3.2"
   },
   "devDependencies": {
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.11.1",
     "jasmine": "^3.5.0"
   }
 }
