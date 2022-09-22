@@ -1,0 +1,10 @@
+// TODO check if import path for mixins is correct
+@use '../../../../styles/mixins/mixins';
+
+:host {
+  display: block;
+}
+
+.c-<%= dasherize(name) %> {
+  // TODO add your styles
+}

@@ -1,0 +1,9 @@
+@use '../../../../../../styles/mixins/mixins';
+
+:host {
+  display: block;
+}
+
+.f-<%= dasherize(name) %> {
+  // TODO add your styles
+}

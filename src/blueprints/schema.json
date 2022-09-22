@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "BlueprintsSchematics",
+  "title": "Blueprints Options Schema",
+  "type": "object",
+  "description": "Creates a blueprint",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The path and name for the blueprint",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Enter path and name for blueprint:"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

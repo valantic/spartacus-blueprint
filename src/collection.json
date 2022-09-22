@@ -1,0 +1,20 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "feature": {
+      "description": "Creates a feature blueprint.",
+      "factory": "./blueprints/index#feature",
+      "schema": "./blueprints/schema.json"
+    },
+    "cmsComponent": {
+      "description": "Creates a feature blueprint.",
+      "factory": "./blueprints/index#cmsComponent",
+      "schema": "./blueprints/schema.json"
+    },
+    "simpleComponent": {
+      "description": "Creates a feature blueprint.",
+      "factory": "./blueprints/index#simpleComponent",
+      "schema": "./blueprints/schema.json"
+    }
+  }
+}
