@@ -1,7 +1,7 @@
 {
   "name": "blueprints",
-  "version": "0.0.0",
-  "description": "A blank schematics",
+  "version": "1.0.0",
+  "description": "Custom Schematics implementation for Angular/Spartacus Blueprints from Valantic Spartacus Base Setup.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
