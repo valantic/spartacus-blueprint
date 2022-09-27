@@ -10,9 +10,22 @@ import {
   Tree,
   url
 } from '@angular-devkit/schematics';
-import {parseName} from '@schematics/angular/utility/parse-name';
+import {Location, parseName} from '@schematics/angular/utility/parse-name';
 import {Schema} from './schema.model';
 
+function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPath: string): Location {
+  let parsedPath = parseName("", name);
+
+  if(parsedPath.path === '/') {
+    const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
+    const projectName = workspaceConfig.defaultProject;
+    const defaultProject = workspaceConfig.projects[projectName];
+    const sourceRoot = defaultProject.sourceRoot;
+    parsedPath = parseName(`${sourceRoot}/app/${projectName}/${schematicPath}`, name);
+  }
+
+  return parsedPath;
+}
 
 function feature(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
@@ -21,8 +34,7 @@ function feature(_options: Schema): Rule {
       throw new SchematicsException("Not an Angular CLI Workspace");
     }
     const sourceTemplate = url('./files/feature');
-    const parsedPath = parseName("/", _options.name);
-    const {name, path} = parsedPath;
+    const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features");
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
@@ -44,8 +56,8 @@ function cmsComponent(_options: Schema): Rule {
       throw new SchematicsException("Not an Angular CLI Workspace");
     }
     const sourceTemplate = url('./files/cms-component');
-    const parsedPath = parseName("/", _options.name);
-    const {name, path} = parsedPath;
+    const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
+
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
