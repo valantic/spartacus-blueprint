@@ -1,4 +1,4 @@
-# Getting Started With Schematics
+# Getting Started With Spartacus Schematics
 
 This repository is a Custom Schematics implementation for Angular/Spartacus Blueprints from Valantic Spartacus Base Setup.
 
@@ -9,27 +9,55 @@ Following blueprints are implemented as for now:
 
 ### How to use
 
-Schematics can be executed from root directory with `ng genereate ./blueprints/src/collections#BLUEPRINT your/path/Name` where `BLUEPRINT` is one of the following:
+Install @valantic/spartacus-blueprints in your project
+
+```bash
+npm i -D @valantic/spartacus-blueprints
+```
+
+Schematics can be executed from root directory with `ng genereate @valantic/spartacus-blueprints:BLUEPRINT your/path/Name` where `BLUEPRINT` is one of the following:
 
 #### Feature
 
+The Feature Blueprint schematic can be run either with only the feature name only or additionally with a specific path (if running with a specific path check all imports in generated files). If run without a path it will be added to your projects features folder.
+
 ```bash
-ng generate ./blueprints/src/collection.json:feature src/app/[PROJECT_NAME]/features/MyFeatureName
+ng generate @valantic/spartacus-blueprints:feature src/app/[PROJECT_NAME]/features/MyFeatureName
+
+or
+
+ng generate @valantic/spartacus-blueprints:feature MyFeatureName
 ```
 
 #### CMS Component
 
+The CMS Component Blueprint schematic can be run either with only the feature name only or additionally with a specific path (if running with a specific path check all imports in generated files). If run without a path it will be added to your projects cms components folder.
+
 ```bash
-ng generate ./blueprints/src/collection.json:cmsComponent src/app/[PROJECT_NAME]/features/cms/components/MyCmsComponentName
+ng generate @valantic/spartacus-blueprints:cmsComponent src/app/[PROJECT_NAME]/features/cms/components/MyCmsComponentName
+
+or
+
+ng generate @valantic/spartacus-blueprints:cmsComponent MyCmsComponentName
 ```
 
 #### Simple Component
+
+The Simple Component Blueprint schematic should be run with a path, and you have to check all imports in all generated files afterwards.
 
 ```bash
 ng generate ./blueprints/src/collection.json:simpleComponent src/app/[PROJECT_NAME]/your/path/MySimpleComponentName
 ```
 
+#### General
+
+In general, you have to import the created module in the corresponding parent module to make it work for now. Consider whether to lazy load or static load it accordingly.
+
 ### Todo
+
+- Automated import in modules
+- Flag for lazy loading modules
+- Flag for creating redux store boilerplate code
 
 ### Local dev
 
