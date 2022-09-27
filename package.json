@@ -1,6 +1,6 @@
 {
   "name": "@valantic/spartacus-blueprints",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Custom Schematics implementation for Angular/Spartacus Blueprints from Valantic Spartacus Base Setup.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -11,12 +11,21 @@
     "type": "git",
     "url": "https://github.com/valantic/spartacus-blueprint"
   },
-  "author": "valantic",
-  "license": "ISC",
+  "engines": {
+    "node": ">=14",
+    "npm": ">=6.13.1"
+  },
+  "author": "valantic CEC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valantic/spartacus-blueprint/issues"
+  },
+  "homepage": "https://github.com/valantic/spartacus-blueprint",
   "keywords": [
     "schematics",
     "angular",
-    "spartacus"
+    "spartacus",
+    "valantic"
   ],
   "schematics": "./src/collection.json",
   "dependencies": {
