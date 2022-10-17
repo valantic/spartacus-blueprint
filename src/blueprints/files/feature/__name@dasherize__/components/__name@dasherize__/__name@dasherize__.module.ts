@@ -11,7 +11,7 @@ import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.compone
     provideConfig(<CmsConfig>{
       // TODO adjust component name from Backend or remove, if it's not a cms component
       cmsComponents: {
-        Ottos<%= classify(name) %>Component: { component: <%= classify(name) %>Component },
+        <%= classify(projectName) %><%= classify(name) %>Component: { component: <%= classify(name) %>Component },
       },
     }),
   ],

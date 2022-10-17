@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { CmsComponentData } from '@spartacus/storefront';
-import { OttosCmsComponent } from '../../../cms/components';
-import { OttosCmsComponentData } from '@models/cms';
+import { <%= classify(projectName) %>CmsComponent } from '../../../cms/components';
+import { <%= classify(projectName) %>CmsComponentData } from '@models/cms';
 
 // TODO adjust this component description
 /**
@@ -13,8 +13,8 @@ import { OttosCmsComponentData } from '@models/cms';
   styleUrls: ['./<%= dasherize(name) %>.styles.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// TODO remove OttosCmsComponent extension, if your component does not need grid / background color functionality
-export class <%= classify(name) %>Component extends OttosCmsComponent<OttosCmsComponentData> {
+// TODO remove <%= classify(projectName) %>CmsComponent extension, if your component does not need grid / background color functionality
+export class <%= classify(name) %>Component extends <%= classify(projectName) %>CmsComponent<<%= classify(projectName) %>CmsComponentData> {
   readonly componentClasses = 'f-<%= dasherize(name) %>';
 
   // TODO if you need multiple (dynamic) classes, use these two lines and a getComponentClasses() method
@@ -31,7 +31,7 @@ export class <%= classify(name) %>Component extends OttosCmsComponent<OttosCmsCo
 
   constructor(
     protected renderer: Renderer2,
-    protected component: CmsComponentData<OttosCmsComponentData>,
+    protected component: CmsComponentData<<%= classify(projectName) %>CmsComponentData>,
     protected elementRef: ElementRef
   ) {
     super(renderer, component, elementRef);
