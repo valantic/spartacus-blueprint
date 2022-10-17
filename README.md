@@ -46,7 +46,7 @@ ng generate @valantic/spartacus-blueprints:cmsComponent MyCmsComponentName
 The Simple Component Blueprint schematic should be run with a path, and you have to check all imports in all generated files afterwards.
 
 ```bash
-ng generate ./blueprints/src/collection.json:simpleComponent src/app/[PROJECT_NAME]/your/path/MySimpleComponentName
+ng generate @valantic/spartacus-blueprints:simpleComponent src/app/[PROJECT_NAME]/your/path/MySimpleComponentName
 ```
 
 #### General
