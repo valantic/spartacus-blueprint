@@ -27,6 +27,12 @@ function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPat
   return parsedPath;
 }
 
+function getProjectName(workspaceConfigBuffer: Buffer): string {
+  const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
+
+  return workspaceConfig.defaultProject;
+}
+
 function feature(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     const workspaceConfigBuffer = tree.read("angular.json");
@@ -35,12 +41,14 @@ function feature(_options: Schema): Rule {
     }
     const sourceTemplate = url('./files/feature');
     const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features");
+    const projectName = getProjectName(workspaceConfigBuffer);
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
         ..._options,
         ...strings,
-        name
+        name,
+        projectName,
       }),
       move(path)
     ])
@@ -57,13 +65,14 @@ function cmsComponent(_options: Schema): Rule {
     }
     const sourceTemplate = url('./files/cms-component');
     const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
-
+    const projectName = getProjectName(workspaceConfigBuffer);
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
         ..._options,
         ...strings,
-        name
+        name,
+        projectName,
       }),
       move(path)
     ])

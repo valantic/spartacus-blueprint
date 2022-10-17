@@ -15,6 +15,10 @@ function getParsedPath(workspaceConfigBuffer, name, schematicPath) {
     }
     return parsedPath;
 }
+function getProjectName(workspaceConfigBuffer) {
+    const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
+    return workspaceConfig.defaultProject;
+}
 function feature(_options) {
     return (tree, _context) => {
         const workspaceConfigBuffer = tree.read("angular.json");
@@ -23,8 +27,10 @@ function feature(_options) {
         }
         const sourceTemplate = schematics_1.url('./files/feature');
         const { name, path } = getParsedPath(workspaceConfigBuffer, _options.name, "features");
+        const projectName = getProjectName(workspaceConfigBuffer);
         const sourceParameterizedTemplate = schematics_1.apply(sourceTemplate, [
-            schematics_1.template(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name })),
+            schematics_1.template(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name,
+                projectName })),
             schematics_1.move(path)
         ]);
         return schematics_1.mergeWith(sourceParameterizedTemplate)(tree, _context);
@@ -39,8 +45,10 @@ function cmsComponent(_options) {
         }
         const sourceTemplate = schematics_1.url('./files/cms-component');
         const { name, path } = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
+        const projectName = getProjectName(workspaceConfigBuffer);
         const sourceParameterizedTemplate = schematics_1.apply(sourceTemplate, [
-            schematics_1.template(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name })),
+            schematics_1.template(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name,
+                projectName })),
             schematics_1.move(path)
         ]);
         return schematics_1.mergeWith(sourceParameterizedTemplate)(tree, _context);
