@@ -9,6 +9,7 @@ describe('<%= classify(name) %>Component', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [<%= classify(name) %>Component],
+      providers: [<%= classify(name) %>Component],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
