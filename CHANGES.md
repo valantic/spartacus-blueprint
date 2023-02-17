@@ -2,7 +2,7 @@
 
 ## Next
 
-## v1.1.0
+## v2.0.0
 * (Breaking) Update angular version to use Version 14
 * (Update) Updates dependencies
 
