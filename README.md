@@ -1,11 +1,16 @@
-# Getting Started With Spartacus Schematics
+# Getting Started With Composable Storefront Schematics
 
-This repository is a Custom Schematics implementation for Angular/Spartacus Blueprints from Valantic Spartacus Base Setup.
+This repository is a Custom Schematics implementation for Component Blueprints for Composable Storefront (formerly Spartacus) 
+from Valantic. It can be used to create new components / features for SAP Composable Storefront Projects.
 
 Following blueprints are implemented as for now:
 - Feature
 - CMS Component
 - Simple Component
+
+### Angular / Composable Storefront Version
+
+This Repository is based on Angular Version 14. It is therefore only compatible with Composable Storefront Versions > 5.0.0.
 
 ### How to use
 
