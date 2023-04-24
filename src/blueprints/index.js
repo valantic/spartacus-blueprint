@@ -8,17 +8,16 @@ function getParsedPath(workspaceConfigBuffer, name, schematicPath) {
     let parsedPath = (0, parse_name_1.parseName)("", name);
     if (parsedPath.path === '/') {
         const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-        const pathArray = process.cwd().split('/');
-        const projectName = pathArray[pathArray.length - 1];
+        const projectName = getProjectName();
         const defaultProject = workspaceConfig.projects[projectName];
         const sourceRoot = defaultProject.sourceRoot;
         parsedPath = (0, parse_name_1.parseName)(`${sourceRoot}/app/${projectName}/${schematicPath}`, name);
     }
     return parsedPath;
 }
-function getProjectName(workspaceConfigBuffer) {
-    const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-    return workspaceConfig.defaultProject;
+function getProjectName() {
+    const pathArray = process.cwd().split('/');
+    return pathArray[pathArray.length - 1];
 }
 function feature(_options) {
     return (tree, _context) => {
@@ -28,7 +27,7 @@ function feature(_options) {
         }
         const sourceTemplate = (0, schematics_1.url)('./files/feature');
         const { name, path } = getParsedPath(workspaceConfigBuffer, _options.name, "features");
-        const projectName = getProjectName(workspaceConfigBuffer);
+        const projectName = getProjectName();
         const sourceParameterizedTemplate = (0, schematics_1.apply)(sourceTemplate, [
             (0, schematics_1.template)(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name,
                 projectName })),
@@ -46,7 +45,7 @@ function cmsComponent(_options) {
         }
         const sourceTemplate = (0, schematics_1.url)('./files/cms-component');
         const { name, path } = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
-        const projectName = getProjectName(workspaceConfigBuffer);
+        const projectName = getProjectName();
         const sourceParameterizedTemplate = (0, schematics_1.apply)(sourceTemplate, [
             (0, schematics_1.template)(Object.assign(Object.assign(Object.assign({}, _options), core_1.strings), { name,
                 projectName })),

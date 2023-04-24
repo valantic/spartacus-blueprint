@@ -18,9 +18,7 @@ function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPat
 
   if(parsedPath.path === '/') {
     const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-    const pathArray = process.cwd().split('/');
-    const projectName = pathArray[pathArray.length -1];
-
+    const projectName = getProjectName();
     const defaultProject = workspaceConfig.projects[projectName];
     const sourceRoot = defaultProject.sourceRoot;
     parsedPath = parseName(`${sourceRoot}/app/${projectName}/${schematicPath}`, name);
@@ -29,10 +27,9 @@ function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPat
   return parsedPath;
 }
 
-function getProjectName(workspaceConfigBuffer: Buffer): string {
-  const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-
-  return workspaceConfig.defaultProject;
+function getProjectName(): string {
+  const pathArray = process.cwd().split('/');
+  return pathArray[pathArray.length -1];
 }
 
 function feature(_options: Schema): Rule {
@@ -43,7 +40,7 @@ function feature(_options: Schema): Rule {
     }
     const sourceTemplate = url('./files/feature');
     const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features");
-    const projectName = getProjectName(workspaceConfigBuffer);
+    const projectName = getProjectName();
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
@@ -67,7 +64,7 @@ function cmsComponent(_options: Schema): Rule {
     }
     const sourceTemplate = url('./files/cms-component');
     const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
-    const projectName = getProjectName(workspaceConfigBuffer);
+    const projectName = getProjectName();
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({

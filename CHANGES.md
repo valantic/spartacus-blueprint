@@ -2,6 +2,9 @@
 
 ## Next
 
+## v2.0.3
+* (Fix) fix bug with angular 14
+
 ## v2.0.2
 * (Fix) fix bug with angular 14
 
