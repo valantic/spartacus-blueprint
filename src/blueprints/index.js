@@ -8,7 +8,8 @@ function getParsedPath(workspaceConfigBuffer, name, schematicPath) {
     let parsedPath = (0, parse_name_1.parseName)("", name);
     if (parsedPath.path === '/') {
         const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-        const projectName = process.cwd();
+        const pathArray = process.cwd().split('/');
+        const projectName = pathArray[pathArray.length - 1];
         const defaultProject = workspaceConfig.projects[projectName];
         const sourceRoot = defaultProject.sourceRoot;
         parsedPath = (0, parse_name_1.parseName)(`${sourceRoot}/app/${projectName}/${schematicPath}`, name);
