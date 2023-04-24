@@ -1,6 +1,6 @@
 {
   "name": "@valantic/spartacus-blueprints",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Custom Schematics implementation for Angular/Spartacus Blueprints from Valantic Spartacus Base Setup.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -12,8 +12,8 @@
     "url": "https://github.com/valantic/spartacus-blueprint"
   },
   "engines": {
-    "node": ">=14",
-    "npm": ">=6.13.1"
+    "node": ">=16",
+    "npm": ">=8.19.3"
   },
   "author": "valantic CEC",
   "license": "MIT",
