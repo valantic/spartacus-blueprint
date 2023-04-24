@@ -2,6 +2,10 @@
 
 ## Next
 
+## v2.0.1
+* (Fix) fix bug with angular 14
+* (Update) Updates Node version
+
 ## v2.0.0
 * (Breaking) Update angular version to use Version 14
 * (Update) Updates dependencies

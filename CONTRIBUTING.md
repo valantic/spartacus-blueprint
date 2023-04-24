@@ -18,7 +18,7 @@
 * Change the Version in the file [package.json](package.json)
 * Run `npm i` to update the version in the file [package-lock.json](package-lock.json)
 * Create a Git Tag with the to be released version number ` git tag x.x.x`
-* Commit and Push the changes to the remote (Make sure to also push Tags)
+* Commit and Push the changes to the remote (Make sure to also push Tags `git push origin --tags`)
 * Login to NPM `npm login` if you not already are logged in
 * Push the Release `npm publish --access public`
 * [Create the Release](https://github.com/valantic/eslint-config-valantic/releases/new) on the github repo  with the 
