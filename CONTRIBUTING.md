@@ -21,6 +21,6 @@
 * Commit and Push the changes to the remote (Make sure to also push Tags `git push origin --tags`)
 * Login to NPM `npm login` if you not already are logged in
 * Push the Release `npm publish --access public`
-* [Create the Release](https://github.com/valantic/eslint-config-valantic/releases/new) on the github repo  with the 
+* [Create the Release](https://github.com/valantic/spartacus-blueprint/releases/new) on the github repo  with the 
   changes from the [CHANGES.md](CHANGES.md)
 * Make sure you have pushed all changes to the Repo
