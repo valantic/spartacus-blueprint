@@ -6,13 +6,13 @@
       "factory": "./blueprints/index#feature",
       "schema": "./blueprints/schema.json"
     },
-    "cmsComponent": {
-      "description": "Creates a feature blueprint.",
+    "cms-component": {
+      "description": "Creates a cms component blueprint.",
       "factory": "./blueprints/index#cmsComponent",
       "schema": "./blueprints/schema.json"
     },
-    "simpleComponent": {
-      "description": "Creates a feature blueprint.",
+    "simple-component": {
+      "description": "Creates a simple component blueprint.",
       "factory": "./blueprints/index#simpleComponent",
       "schema": "./blueprints/schema.json"
     }

@@ -2,9 +2,11 @@
 
 ## Next
 
+## v2.0.5
+* (Fix) make cmsComponent and simpleComponent work again after angular 14 update
+
 ## v2.0.4
 * (Fix) take first project from angular.json projects as project name
-* (Fix) make simpleComponent generation work
 
 ## v2.0.3
 * (Fix) fix bug with angular 14
