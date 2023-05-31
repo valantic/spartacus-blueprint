@@ -2,6 +2,10 @@
 
 ## Next
 
+## v2.0.4
+* (Fix) take first project from angular.json projects as project name
+* (Fix) make simpleComponent generation work
+
 ## v2.0.3
 * (Fix) fix bug with angular 14
 

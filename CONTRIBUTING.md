@@ -12,8 +12,8 @@
 
 ## Releasing
 
-* Make sure, you have described your changes in the file [CHANGES.md](CHANGES.md)
-* Move all changes in the file [CHANGES.md](CHANGES.md) from below `## Next` below a new Paragraph with the 
+* Make sure, you have described your changes in the file [CHANGELOG.md](CHANGELOG.md)
+* Move all changes in the file [CHANGELOG.md](CHANGELOG.md) from below `## Next` below a new Paragraph with the 
   to be released version
 * Change the Version in the file [package.json](package.json)
 * Run `npm i` to update the version in the file [package-lock.json](package-lock.json)

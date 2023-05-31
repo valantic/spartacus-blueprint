@@ -13,12 +13,11 @@ import {
 import {Location, parseName} from '@schematics/angular/utility/parse-name';
 import {Schema} from './schema.model';
 
-function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPath: string): Location {
+function getParsedPath(workspaceConfig: any, name: string, schematicPath: string): Location {
   let parsedPath = parseName("", name);
 
   if(parsedPath.path === '/') {
-    const workspaceConfig = JSON.parse(workspaceConfigBuffer.toString());
-    const projectName = getProjectName();
+    const projectName = getProjectName(workspaceConfig);
     const defaultProject = workspaceConfig.projects[projectName];
     const sourceRoot = defaultProject.sourceRoot;
     parsedPath = parseName(`${sourceRoot}/app/${projectName}/${schematicPath}`, name);
@@ -27,20 +26,31 @@ function getParsedPath(workspaceConfigBuffer: Buffer, name: string, schematicPat
   return parsedPath;
 }
 
-function getProjectName(): string {
-  const pathArray = process.cwd().split('/');
-  return pathArray[pathArray.length -1];
+function getProjectName(workspaceConfig: any): string {
+  if (!workspaceConfig) {
+    throw new SchematicsException('Workspace config parsing failed');
+  }
+
+  return Object.keys(workspaceConfig.projects)[0];
+}
+
+function getWorkspaceConfig(tree: Tree): object {
+  const workspaceConfigBuffer = tree.read("angular.json");
+
+  if (!workspaceConfigBuffer) {
+    throw new SchematicsException("Not an Angular CLI Workspace");
+  }
+
+  return JSON.parse(workspaceConfigBuffer.toString());
 }
 
 function feature(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    const workspaceConfigBuffer = tree.read("angular.json");
-    if (!workspaceConfigBuffer) {
-      throw new SchematicsException("Not an Angular CLI Workspace");
-    }
+    const workspaceConfig = getWorkspaceConfig(tree);
+
     const sourceTemplate = url('./files/feature');
-    const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features");
-    const projectName = getProjectName();
+    const {name, path} = getParsedPath(workspaceConfig, _options.name, "features");
+    const projectName = getProjectName(workspaceConfig);
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
@@ -58,13 +68,11 @@ function feature(_options: Schema): Rule {
 
 function cmsComponent(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    const workspaceConfigBuffer = tree.read("angular.json");
-    if (!workspaceConfigBuffer) {
-      throw new SchematicsException("Not an Angular CLI Workspace");
-    }
+    const workspaceConfig = getWorkspaceConfig(tree);
+
     const sourceTemplate = url('./files/cms-component');
-    const {name, path} = getParsedPath(workspaceConfigBuffer, _options.name, "features/cms/components");
-    const projectName = getProjectName();
+    const {name, path} = getParsedPath(workspaceConfig, _options.name, "features/cms/components");
+    const projectName = getProjectName(workspaceConfig);
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({
@@ -82,13 +90,10 @@ function cmsComponent(_options: Schema): Rule {
 
 function simpleComponent(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    const workspaceConfigBuffer = tree.read("angular.json");
-    if (!workspaceConfigBuffer) {
-      throw new SchematicsException("Not an Angular CLI Workspace");
-    }
+    const workspaceConfig = getWorkspaceConfig(tree);
+
     const sourceTemplate = url('./files/simple-component');
-    const parsedPath = parseName("/", _options.name);
-    const {name, path} = parsedPath;
+    const {name, path} = getParsedPath(workspaceConfig, _options.name, "elements");
 
     const sourceParameterizedTemplate = apply(sourceTemplate, [
       template({

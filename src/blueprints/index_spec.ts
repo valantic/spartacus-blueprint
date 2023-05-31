@@ -14,7 +14,7 @@ const angularJsonString = '{\n' +
   '    "defaultCollection": "@angular-eslint/schematics"\n' +
   '  },\n' +
   '  "newProjectRoot": "projects",\n' +
-  '  "defaultProject": "' +  testProjectName + '"\n' +
+  '  "projects": {"' +  testProjectName + '": {} }\n' +
   '}\n';
 
 describe('feature', () => {
