@@ -2,6 +2,10 @@
 
 ## Next
 
+## v3.0.0
+* (Update) Updates Node version
+* (Update) Updates Angular version to use Version 17
+
 ## v2.0.5
 * (Fix) make cmsComponent and simpleComponent work again after angular 14 update
 
