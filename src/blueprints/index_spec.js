@@ -29,7 +29,7 @@ describe('feature', () => {
         const runner = new testing_1.SchematicTestRunner('schematics', collectionPath);
         let tree = new testing_1.UnitTestTree(new schematics_1.HostTree());
         tree.create('angular.json', angularJsonString);
-        const treeFeature = yield runner.runSchematicAsync('feature', { name: `src/app/${testProjectName}/features/MyFeatureName` }, tree).toPromise();
+        const treeFeature = yield runner.runSchematic('feature', { name: `src/app/${testProjectName}/features/MyFeatureName` }, tree);
         expect(treeFeature.files.length).toEqual(9);
     }));
 });
@@ -38,7 +38,7 @@ describe('cms-component', () => {
         const runner = new testing_1.SchematicTestRunner('schematics', collectionPath);
         let tree = new testing_1.UnitTestTree(new schematics_1.HostTree());
         tree.create('angular.json', angularJsonString);
-        const treeCmsComponent = yield runner.runSchematicAsync('cms-component', { name: `src/app/${testProjectName}/features/cms/components/MyCmsComponentName` }, tree).toPromise();
+        const treeCmsComponent = yield runner.runSchematic('cms-component', { name: `src/app/${testProjectName}/features/cms/components/MyCmsComponentName` }, tree);
         expect(treeCmsComponent.files.length).toEqual(7);
     }));
 });
@@ -47,7 +47,7 @@ describe('simple-component', () => {
         const runner = new testing_1.SchematicTestRunner('schematics', collectionPath);
         let tree = new testing_1.UnitTestTree(new schematics_1.HostTree());
         tree.create('angular.json', angularJsonString);
-        const treeSimpleComponent = yield runner.runSchematicAsync('simple-component', { name: `src/app/${testProjectName}/your/path/MySimpleComponentName` }, tree).toPromise();
+        const treeSimpleComponent = yield runner.runSchematic('simple-component', { name: `src/app/${testProjectName}/your/path/MySimpleComponentName` }, tree);
         expect(treeSimpleComponent.files.length).toEqual(7);
     }));
 });
