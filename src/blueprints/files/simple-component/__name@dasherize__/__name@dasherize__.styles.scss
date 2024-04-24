@@ -1,5 +1,5 @@
-// TODO check if import path for mixins is correct
-@use '../../../../styles/mixins/mixins';
+@use 'variables';
+@use 'mixins';
 
 :host {
   display: block;

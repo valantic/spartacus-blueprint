@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 
 // TODO adjust this component description
 /**
- * Hello world component to render a hello world message
+ * Component to render a hello world message
  */
 @Component({
   selector: 'c-<%= dasherize(name) %>',
