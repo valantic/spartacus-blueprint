@@ -15,12 +15,19 @@ describe('<%= classify(name) %>Component', () => {
   });
 
   beforeEach(() => {
+    // TODO add spyOns for component properties or logic running in the constructor here
+
     fixture = TestBed.createComponent(<%= classify(name) %>Component);
     component = fixture.componentInstance;
+
+    // TODO add spyOns for logic running in ngOnInit here
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    // TODO add spyOns for manually called component methods here
+
     expect(component).toBeTruthy();
   });
 });
